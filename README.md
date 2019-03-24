@@ -92,6 +92,7 @@ int main() {
 
 - How are they different?
     > C-str: Has fixed size of an array, Does not track their own size, Terminated by their NULL character
+    
     > String: Flexible size, Able to track size, Enclosed in “_”
 
 - The character testing functions (isdigit, isalpha, islower, isupper, isspace, etc)
