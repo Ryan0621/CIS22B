@@ -236,6 +236,37 @@ class UnderGrad : public student
 - Do you understand how to insert a node between two nodes on a linked list?
     > While traversing the linked list, one pointer (nodeptr) to locate the node with data value greater than that of node to be inserted, another pointer (previousNode) to 'trail behind' one node, to point to node before point of insertion
     > After traversing, if it's not the end or beginning of the list, `newNode->next = nodeptr; previousNode->next = newNode;`
+```
+void NamesList::insertNode(string name) {
+    ListNode *newNode;
+    ListNode *nodePtr;
+    ListNode *previousNode = nullptr;
+
+    newNode = new ListNode;
+    newNode->name = name;
+
+    if(!head) {
+        head = newNode;
+        newNode->next = nullptr;
+    }
+    else {
+        nodePtr = head;
+        previousNode = nullptr;
+        while (nodePtr != nullptr && nodePtr->name < name) {
+            previousNode = nodePtr;
+            nodePtr = nodePtr->next;
+        }
+        if (previousNode == nullptr) {
+            head = newNode;
+            newNode->next = nodePtr;
+        }
+        else {
+            previousNode->next = newNode;
+            newNode->next = nodePtr;
+        }
+    }
+}
+```
 - Do you understand how and why you should cleanup memory that you allocated for the list?
     > Prevent memory leak
 
